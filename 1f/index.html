@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <title>九九乘法表</title>
+</head>
+<body>
+    <div id="chart">
+        <mul></mul>
+    </div>
+</body>
+
+<script type="text/x-template" id="multiplication">
+    <div class="row">
+        <div class=" box">
+            <span>x</span>
+            <span class="line"></span>
+            <span>x</span>
+            <div class="text">
+                <span class="list">九九乘法表</span><br>
+                <span class="en_list">MULTIPLICATION CHART</span>
+            </div>
+            <span>x</span>
+            <span class="line"></span>
+            <span>x</span>
+        </div>
+        <div class="box1" v-for="num in 9" v-if="num > 1">      
+            <div class="d-inline-block text-left">
+                <div class="kkk mb-4"><h3>{{num}}</h3></div>
+                <div class="kk" v-for="number in 3">{{num}} X {{number}} = {{num*number}}</div>
+            </div>
+            <div class="d-inline-block text-left">
+                <div class="kk" v-for="number in 9" v-if="number > 3">{{num}} X {{number}} = {{num*number}}</div>
+            </div>
+            
+        </div>
+    </div>
+</script>
+
+<script>
+Vue.component('mul', {
+    template: '#multiplication',
+})
+
+new Vue({
+    el:'#chart'
+})
+</script>
+
+<style>
+body{
+    background-color: #F0F0F0;
+}
+.row{
+    padding: 80px 85px
+}
+.line{
+    height: 1px;
+    width: 280px;
+    background-color: #2EB738;
+    display: inline-block;
+    margin: 0 2px 5px 5px; 
+}
+.box{
+    width: 350px;
+    height: 366px;
+    margin: 20px 15px;
+    text-align: center;
+    color: #2EB738
+}
+.list{
+    font-size: 56px;
+}
+.en_list{
+    width: 278px;
+    height: 28px;
+    font-size: 24px;
+}
+.text{
+    text-align: center;
+    margin:100px 0
+}
+.box1{
+    width: 350px;
+    height: 366px;
+    background-color: white; 
+    margin: 20px 15px;
+    text-align: center;
+    color: #2EB738;
+    padding:64px 40px;
+    border-top-left-radius: 64px;
+    border-bottom-right-radius: 40px;
+}
+h3{
+    font-size: 128px;
+    font-weight: bold;
+}
+.kk{
+    width: 105px;
+    height: 33px;
+}
+.kkk{
+    font-size: 24px;
+    width: 118px;
+    height: 120px;
+}
+</style>
+</html>

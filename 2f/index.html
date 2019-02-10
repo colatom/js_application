@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>clock</title>
+</head>
+<body>
+    <div class="img1">
+        <img src="second-hand.svg" class="circle img2" alt="">
+        <img src="minute-hand.svg" class="circle img3" alt="">
+        <img src="hour-hand.svg" class="circle img4" alt="">
+    </div>
+</body>
+</html>
+
+<script>
+const second = document.querySelector('.img2')
+const minute = document.querySelector('.img3')
+const hour = document.querySelector('.img4')
+
+function setDate(){
+    const nowDate = new Date();
+
+    const seconds = nowDate.getSeconds();  
+    const secondDegrees = (360/60) * seconds +180
+    second.style.transition = "all 0.05s"
+    second.style.transform = `rotate(${secondDegrees}deg)`
+
+
+
+    const minutes = nowDate.getMinutes()    
+    const minuteDegrees = (360/60) * minutes +180;    
+    minute.style.transition = "all 0.05s"
+    minute.style.transform = `rotate(${minuteDegrees}deg)`
+
+
+    const hours = nowDate.getHours()
+    const hourDegrees = (360/12) * (hours % 12) +270;    
+    hour.style.transition = "all 0.05s"
+    hour.style.transform = `rotate(${hourDegrees}deg)`
+}
+
+setInterval(setDate, 10)
+</script>
+
+<style>
+body{
+    background-color: #293B29;
+}
+.img1{
+    background-image: url('clock-bg.svg');
+    background-position: center;
+    width: 350px;
+    height: 350px;
+    border-radius: 80px;
+    margin: 100px auto;
+    position: relative;    
+}
+.circle{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transition: all 0.05s
+}
+.img2{
+    transform-origin: 50% 0%
+}
+.img3{
+    transform-origin: 50% 0%
+}
+.img4{
+    transform-origin: 0% 0%
+}
+</style>

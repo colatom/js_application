@@ -92,7 +92,6 @@
 
 <script>
 // API http://opendata2.epa.gov.tw/AQI.json
-
 new Vue({
     el:'#pollution',
     data:{
@@ -105,7 +104,7 @@ new Vue({
     },
     methods: {
         getCounty(){
-            const api = 'http://opendata2.epa.gov.tw/AQI.json';
+            const api = 'https://script.google.com/macros/s/AKfycbxjbo_rtQi6WakngoUbT2lmIOg8M1Xmb_UTKqRFR4dZfc4TJgE/exec?url=opendata2.epa.gov.tw/AQI.json';
             const vm = this;
             axios.get(api).then((res) => {
                 vm.location = res.data;

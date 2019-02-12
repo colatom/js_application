@@ -43,7 +43,7 @@ let str = '';
 btn.addEventListener('click', calc);
 function calc(e){
     num = e.target.textContent;    //target 回傳到該事件 此處的e.target即為btn
-    if(e.target.nodeName !== 'button'){return}  //nodeName 該節點 此處的e.target.nodeName即為 <div class="btn"></div>
+    if(e.target.nodeName !== 'BUTTON'){return}  //nodeName 該節點 此處的e.target.nodeName即為 <div class="btn"></div>
     if(!isNaN(num) || num === '+' || num === '-' || num === '×' || num === '÷' || num === '.'){
         str = num;
         input.textContent += str;
@@ -62,9 +62,12 @@ function calc(e){
     
 }
 
-
-
-
+function toCurrency(num){
+    num = output.textContent
+    var parts = num.toString().split('.');
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return parts.join('.');
+}
 </script>
 
 <style>
